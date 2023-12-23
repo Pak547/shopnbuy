@@ -49,6 +49,12 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  Tag.create(req.body)
+    .then((tagData) => res.json(tagData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
   // create a new tag
 });
 
