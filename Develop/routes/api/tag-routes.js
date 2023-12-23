@@ -3,12 +3,12 @@ const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
 
-router.get('/', (req, res) => {
-  Tag.findAll({
+router.get('/', async (req, res) => {
+  await Tag.findAll({
     include: [
       {
         model: Product,
-        attributes: ['tag_name'],
+        attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
       },
     ],
   })
@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Product,
-        attributes: ['tag_name'],
+        attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
       },
     ],
   })
