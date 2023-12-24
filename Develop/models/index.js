@@ -28,6 +28,7 @@ Tag.belongsToMany(Product, {
   onDelete: 'CASCADE',
 });
 
+
 module.exports = {
   Product,
   Category,
