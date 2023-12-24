@@ -6,7 +6,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // get all products
 // be sure to include its associated Category and Tag data
-router.get('/', productRoutes, (req, res) => {
+router.get('/', (req, res) => {
   Product.findAll({
     attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
     include: [
@@ -29,7 +29,7 @@ router.get('/', productRoutes, (req, res) => {
 
 // find a single product by its `id`
 // be sure to include its associated Category and Tag data
-router.get('/:id', productRoutes, (req, res) => {
+router.get('/:id', (req, res) => {
   Product.findOne({
     where: {
       id: req.params.id,
@@ -59,7 +59,7 @@ router.get('/:id', productRoutes, (req, res) => {
 });
 
 // create new product
-router.post('/', productRoutes, (req, res) => {
+router.post('/', (req, res) => {
   Product.create({
     product_name: req.body.product_name,
     price: req.body.price,
